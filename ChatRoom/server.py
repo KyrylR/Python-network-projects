@@ -1,7 +1,7 @@
-import threading
 import socket
+import threading
 
-host = '172.105.104.152' #localhost
+host = '172.105.104.152'  # localhost
 port = 5555
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -14,10 +14,12 @@ server.listen()
 clients = []
 nicknames = []
 
+
 def broadcast(message, n):
     for client in clients:
         if n != client:
             client.send(message)
+
 
 def handle(client):
     while True:
@@ -32,6 +34,7 @@ def handle(client):
             broadcast(f'{nickname} left the chat'.encode('ascii'), client)
             nicknames.remove(nickname)
             break
+
 
 def receive():
     while True:
@@ -49,5 +52,6 @@ def receive():
 
         thread = threading.Thread(target=handle, args=(client,))
         thread.start()
+
 
 receive()

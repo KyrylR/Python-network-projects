@@ -1,8 +1,8 @@
 import smtplib
 from email import encoders
-from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 server = smtplib.SMTP('smtp.live.com', 587)
 server.connect("smtp.live.com", 587)
@@ -14,7 +14,6 @@ with open('password.txt', 'r') as f:
     password = f.read()
 
 server.login('test4edupc@hotmail.com', password)
-
 
 msg = MIMEMultipart()
 msg['From'] = 'Myself'

